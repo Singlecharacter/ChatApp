@@ -18,7 +18,7 @@
 
 int main(void)
 {
-    channel* head = new channel();
+
 
     return 0;
 }

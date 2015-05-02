@@ -109,3 +109,102 @@
 	<string>
 	<vector>
 
+1430251343 source:/home/conor/Desktop/ChatApp/IRCChatApp/BuilderSource.cpp
+	"BuilderSource.h"
+
+1430251152 /home/conor/Desktop/ChatApp/IRCChatApp/BuilderSource.h
+	"stdafx.h"
+	<queue>
+	"MessageBuilder.h"
+	"IMessageSource.h"
+
+1430251088 /home/conor/Desktop/ChatApp/IRCChatApp/stdafx.h
+	<stdio.h>
+	<iostream>
+	<string>
+
+1430251849 /home/conor/Desktop/ChatApp/IRCChatApp/MessageBuilder.h
+	"Message.h"
+	<vector>
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatApp/Message.h
+	"stdafx.h"
+	<string>
+	<vector>
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatApp/IMessageSource.h
+	"stdafx.h"
+	"Message.h"
+	<queue>
+
+1430247854 source:/home/conor/Desktop/ChatApp/IRCChatApp/FileDestination.cpp
+	"FileDestination.h"
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatApp/FileDestination.h
+	"IMessageDestination.h"
+	<fstream>
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatApp/IMessageDestination.h
+	"Message.h"
+
+1430247927 source:/home/conor/Desktop/ChatApp/IRCChatApp/FilePusher.cpp
+	"FilePusher.h"
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatApp/FilePusher.h
+	"IMessagePusher.h"
+	"FileDestination.h"
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatApp/IMessagePusher.h
+	"stdafx.h"
+	"Message.h"
+	"MessageQueue.h"
+	"IMessageDestination.h"
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatApp/MessageQueue.h
+	"stdafx.h"
+	"IMessageSource.h"
+	"Message.h"
+	<queue>
+
+1430248876 source:/home/conor/Desktop/ChatApp/IRCChatApp/FileSource.cpp
+	"FileSource.h"
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatApp/FileSource.h
+	"IMessageSource.h"
+	<fstream>
+
+1430594233 source:/home/conor/Desktop/ChatApp/IRCChatApp/main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<errno.h>
+	<string.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<netdb.h>
+	<arpa/inet.h>
+	<sys/wait.h>
+	<signal.h>
+	"defines.h"
+	"Message.h"
+	"MessageBuilder.h"
+	"stdafx.h"
+
+1430594167 /home/conor/Desktop/ChatApp/IRCChatApp/defines.h
+	<string>
+	<vector>
+
+1430247619 source:/home/conor/Desktop/ChatApp/IRCChatApp/Message.cpp
+	"Message.h"
+	<math.h>
+
+1430251944 source:/home/conor/Desktop/ChatApp/IRCChatApp/MessageBuilder.cpp
+	"MessageBuilder.h"
+
+1429538927 source:/home/conor/Desktop/ChatApp/IRCChatApp/MessageQueue.cpp
+	"MessageQueue.h"
+
+1429538927 source:/home/conor/Desktop/ChatApp/IRCChatApp/stdafx.cpp
+	"stdafx.h"
+

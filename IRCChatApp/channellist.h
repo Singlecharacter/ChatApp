@@ -1,14 +1,28 @@
 #ifndef CHANNELLIST_H
 #define CHANNELLIST_H
 
+#include "stdafx.h"
+#include "defines.h"
 
 class ChannelList
 {
     public:
         ChannelList();
         ~ChannelList();
-    protected:
+
+        bool addChannel(std::string name);
+        bool removeChannel(std::string name);
+
+        channel *findChannel(std::string name);
+
+        bool addUser(std::string userName, std::string ip, std::string channelName);
+        bool addUser(user *newUser, std::string channelName);
+
+        user *findUserInChannel(std::string userName, std::string channelName);
+
     private:
+
+    channel *head;
 };
 
 #endif // CHANNELLIST_H

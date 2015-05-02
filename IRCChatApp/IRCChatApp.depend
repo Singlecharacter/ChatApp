@@ -1,0 +1,111 @@
+# depslib dependency file v1.0
+1430247854 source:/home/conor/Desktop/IRCChatApp/FileDestination.cpp
+	"FileDestination.h"
+
+1429538927 /home/conor/Desktop/IRCChatApp/FileDestination.h
+	"IMessageDestination.h"
+	<fstream>
+
+1429538927 /home/conor/Desktop/IRCChatApp/IMessageDestination.h
+	"Message.h"
+
+1429538927 /home/conor/Desktop/IRCChatApp/Message.h
+	"stdafx.h"
+	<string>
+	<vector>
+
+1430251088 /home/conor/Desktop/IRCChatApp/stdafx.h
+	<stdio.h>
+	<iostream>
+	<string>
+
+1430247927 source:/home/conor/Desktop/IRCChatApp/FilePusher.cpp
+	"FilePusher.h"
+
+1429538927 /home/conor/Desktop/IRCChatApp/FilePusher.h
+	"IMessagePusher.h"
+	"FileDestination.h"
+
+1429538927 /home/conor/Desktop/IRCChatApp/IMessagePusher.h
+	"stdafx.h"
+	"Message.h"
+	"MessageQueue.h"
+	"IMessageDestination.h"
+
+1429538927 /home/conor/Desktop/IRCChatApp/MessageQueue.h
+	"stdafx.h"
+	"IMessageSource.h"
+	"Message.h"
+	<queue>
+
+1429538927 /home/conor/Desktop/IRCChatApp/IMessageSource.h
+	"stdafx.h"
+	"Message.h"
+	<queue>
+
+1430248876 source:/home/conor/Desktop/IRCChatApp/FileSource.cpp
+	"FileSource.h"
+
+1429538927 /home/conor/Desktop/IRCChatApp/FileSource.h
+	"IMessageSource.h"
+	<fstream>
+
+1430247619 source:/home/conor/Desktop/IRCChatApp/Message.cpp
+	"Message.h"
+	<math.h>
+
+1430251944 source:/home/conor/Desktop/IRCChatApp/MessageBuilder.cpp
+	"MessageBuilder.h"
+
+1430251849 /home/conor/Desktop/IRCChatApp/MessageBuilder.h
+	"Message.h"
+	<vector>
+
+1429538927 source:/home/conor/Desktop/IRCChatApp/MessageQueue.cpp
+	"MessageQueue.h"
+
+1429538927 source:/home/conor/Desktop/IRCChatApp/stdafx.cpp
+	"stdafx.h"
+
+1430251343 source:/home/conor/Desktop/IRCChatApp/BuilderSource.cpp
+	"BuilderSource.h"
+
+1430251152 /home/conor/Desktop/IRCChatApp/BuilderSource.h
+	"stdafx.h"
+	<queue>
+	"MessageBuilder.h"
+	"IMessageSource.h"
+
+1430252721 source:/home/conor/Desktop/IRCChatApp/MessageTesting.cpp
+	"stdafx.h"
+	"Message.h"
+	"MessageBuilder.h"
+	"MessageQueue.h"
+	"FileSource.h"
+	"FileDestination.h"
+	"FilePusher.h"
+	"BuilderSource.h"
+	<chrono>
+
+1430594095 source:/home/conor/Desktop/IRCChatApp/main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<errno.h>
+	<string.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<netdb.h>
+	<arpa/inet.h>
+	<sys/wait.h>
+	<signal.h>
+	"defines.h"
+	"Message.h"
+	"MessageBuilder.h"
+	"stdafx.h"
+
+1430594167 /home/conor/Desktop/IRCChatApp/defines.h
+	<string>
+	<vector>
+

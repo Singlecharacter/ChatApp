@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="IRCChatClient" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/IRCChatClient" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/IRCChatClient" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++11" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="BuilderSource.cpp" />
+		<Unit filename="BuilderSource.h" />
+		<Unit filename="FileDestination.cpp" />
+		<Unit filename="FileDestination.h" />
+		<Unit filename="FilePusher.cpp" />
+		<Unit filename="FilePusher.h" />
+		<Unit filename="FileSource.cpp" />
+		<Unit filename="FileSource.h" />
+		<Unit filename="IMessageDestination.h" />
+		<Unit filename="IMessagePusher.h" />
+		<Unit filename="IMessageSource.h" />
+		<Unit filename="Message.cpp" />
+		<Unit filename="Message.h" />
+		<Unit filename="MessageBuilder.cpp" />
+		<Unit filename="MessageBuilder.h" />
+		<Unit filename="MessageQueue.cpp" />
+		<Unit filename="MessageQueue.h" />
+		<Unit filename="defines.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="stdafx.cpp" />
+		<Unit filename="stdafx.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

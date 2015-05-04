@@ -91,3 +91,101 @@
 1429538927 source:/home/conor/Desktop/IRCChatClient/stdafx.cpp
 	"stdafx.h"
 
+1430251343 source:/home/conor/Desktop/ChatApp/IRCChatClient/BuilderSource.cpp
+	"BuilderSource.h"
+
+1430251152 /home/conor/Desktop/ChatApp/IRCChatClient/BuilderSource.h
+	"stdafx.h"
+	<queue>
+	"MessageBuilder.h"
+	"IMessageSource.h"
+
+1430251088 /home/conor/Desktop/ChatApp/IRCChatClient/stdafx.h
+	<stdio.h>
+	<iostream>
+	<string>
+
+1430251849 /home/conor/Desktop/ChatApp/IRCChatClient/MessageBuilder.h
+	"Message.h"
+	<vector>
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatClient/Message.h
+	"stdafx.h"
+	<string>
+	<vector>
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatClient/IMessageSource.h
+	"stdafx.h"
+	"Message.h"
+	<queue>
+
+1430247854 source:/home/conor/Desktop/ChatApp/IRCChatClient/FileDestination.cpp
+	"FileDestination.h"
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatClient/FileDestination.h
+	"IMessageDestination.h"
+	<fstream>
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatClient/IMessageDestination.h
+	"Message.h"
+
+1430247927 source:/home/conor/Desktop/ChatApp/IRCChatClient/FilePusher.cpp
+	"FilePusher.h"
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatClient/FilePusher.h
+	"IMessagePusher.h"
+	"FileDestination.h"
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatClient/IMessagePusher.h
+	"stdafx.h"
+	"Message.h"
+	"MessageQueue.h"
+	"IMessageDestination.h"
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatClient/MessageQueue.h
+	"stdafx.h"
+	"IMessageSource.h"
+	"Message.h"
+	<queue>
+
+1430248876 source:/home/conor/Desktop/ChatApp/IRCChatClient/FileSource.cpp
+	"FileSource.h"
+
+1429538927 /home/conor/Desktop/ChatApp/IRCChatClient/FileSource.h
+	"IMessageSource.h"
+	<fstream>
+
+1430247619 source:/home/conor/Desktop/ChatApp/IRCChatClient/Message.cpp
+	"Message.h"
+	<math.h>
+
+1430251944 source:/home/conor/Desktop/ChatApp/IRCChatClient/MessageBuilder.cpp
+	"MessageBuilder.h"
+
+1429538927 source:/home/conor/Desktop/ChatApp/IRCChatClient/MessageQueue.cpp
+	"MessageQueue.h"
+
+1429538927 source:/home/conor/Desktop/ChatApp/IRCChatClient/stdafx.cpp
+	"stdafx.h"
+
+1430712823 source:/home/conor/Desktop/ChatApp/IRCChatClient/main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<errno.h>
+	<string.h>
+	<netdb.h>
+	<sys/types.h>
+	<netinet/in.h>
+	<sys/socket.h>
+	<string>
+	<iostream>
+	<pthread.h>
+	"Message.h"
+	"MessageBuilder.h"
+	"defines.h"
+	<arpa/inet.h>
+
+1430710719 /home/conor/Desktop/ChatApp/IRCChatClient/defines.h
+	<string>
+

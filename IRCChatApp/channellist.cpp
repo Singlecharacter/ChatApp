@@ -68,7 +68,7 @@ channel *ChannelList::findChannel(std::string name)
     return nullptr;
 }
 
-bool ChannelList::addUser(std::string userName, std::string ip, std::string channelName)
+bool ChannelList::addUser(std::string userName, int sock, std::string channelName)
 {
     channel *temp = head;
 
@@ -78,7 +78,7 @@ bool ChannelList::addUser(std::string userName, std::string ip, std::string chan
         {
             user *newUser = new user();
             newUser->name = userName;
-            newUser->ip = ip;
+            newUser->sock = sock;
 
             temp->members.push_back(newUser);
 
@@ -106,6 +106,29 @@ bool ChannelList::addUser(user *newUser, std::string channelName)
     return false;
 }
 
+bool ChannelList::removeUserFromChannel(std::string userName, std::string channelName)
+{
+    channel *temp = head;
+
+    while(temp != nullptr)
+    {
+        if(temp->name == channelName)
+        {
+            for(int i = 0; i < temp->members.size(); i++)
+            {
+                if(temp->members.at(i)->name == userName)
+                {
+                    temp->members.erase(temp->members.begin()+i);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
+
+    return false;
+}
 
 user *ChannelList::findUserInChannel(std::string userName, std::string channelName)
 {

@@ -11,6 +11,7 @@
 #include <sys/socket.h>
 #include <string>
 #include <iostream>
+#include <pthread.h>
 
 #include "Message.h"
 #include "MessageBuilder.h"
@@ -28,6 +29,93 @@ void *get_in_addr(struct sockaddr *sa)
     }
 
     return &(((struct sockaddr_in6*)sa)->sin6_addr);
+}
+
+void *recv_loop(void *a)
+{
+    int sockfd = *((int *)a);
+
+    char buf[MAXDATASIZE];
+
+    while(1)
+    {
+        if(recv(sockfd,buf,MAXDATASIZE - 1,0) > 0)
+        {
+            std::string bufString = buf;
+
+            Message newMessage(bufString);
+
+            int messageType = newMessage.getInt("type");
+
+            if(messageType == SERVER_ACCEPT)
+            {
+                std::cout << "Connected to server." << std::endl;
+            }
+            else if(messageType == SERVER_GENERAL)
+            {
+                std::cout << newMessage.getString("main") << std::endl;
+            }
+            else if(messageType == SERVER_CHAT_CHANNEL)
+            {
+                std::cout << newMessage.getString("channel") + ": " + newMessage.getString("main") << std::endl;
+            }
+        }
+    }
+
+    return nullptr;
+}
+
+void *input_loop(void *a)
+{
+    int sockfd = *((int *)a);
+
+    std::string s;
+
+    std::string currentChannel = "default";
+
+    while(true)
+    {
+        std::getline(std::cin, s);
+
+        std::string command = "";
+
+        int commandType = USER_CHAT_CHANNEL;
+
+        //Check for special commands
+        if(s[0] == '#')
+        {
+            command = s.substr(1, s.find(' ', 0) - 1);
+
+            if(command == "name")
+            {
+                commandType = USER_SET_NAME;
+            }
+            else if(command == "channel")
+            {
+                commandType = USER_CONNECT_CHANNEL;
+            }
+        }
+
+        s.erase(0, s.find(' ', 0)+1);
+
+        Message sendMessage;
+
+        if(commandType == USER_CHAT_CHANNEL)
+        {
+            sendMessage = (new MessageBuilder())->putInt("type",commandType)->putString("main",s)->putString("channel",currentChannel)->build();
+        }
+        else if(commandType == USER_SET_NAME)
+        {
+            sendMessage = (new MessageBuilder())->putInt("type",commandType)->putString("name",s)->build();
+        }
+        else if(commandType == USER_CONNECT_CHANNEL)
+        {
+            sendMessage = (new MessageBuilder())->putInt("type",commandType)->putString("channel",s)->build();
+        }
+
+        send(sockfd, sendMessage.getRaw().c_str(),sendMessage.getRaw().length(),0);
+    }
+    return nullptr;
 }
 
 int main(int argc, char *argv[])
@@ -79,14 +167,14 @@ int main(int argc, char *argv[])
 
     freeaddrinfo(servinfo); // all done with this structure
 
-    Message m = (new MessageBuilder())->putInt("type",USER_CONNECT_CHANNEL)->putString("main", "Hello world!")->build();
+    pthread_t serv_thread, input_thread;
 
-    std::string raw = m.getRaw();
-    std::cout << raw.c_str() << std::endl;
-    std::cout << sizeof raw.c_str() << std::endl;
+    pthread_create(&serv_thread,NULL,recv_loop,&sockfd);
+    pthread_create(&input_thread,NULL,input_loop,&sockfd);
 
-    if (send(sockfd, raw.c_str(), raw.length(), 0) == -1)
-            perror("send");
+    pthread_join(serv_thread,NULL);
+
+    close(sockfd);
 
     return 0;
 }

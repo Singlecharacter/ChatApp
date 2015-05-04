@@ -15,8 +15,10 @@ class ChannelList
 
         channel *findChannel(std::string name);
 
-        bool addUser(std::string userName, std::string ip, std::string channelName);
+        bool addUser(std::string userName, int sock, std::string channelName);
         bool addUser(user *newUser, std::string channelName);
+
+        bool removeUserFromChannel(std::string userName, std::string channelName);
 
         user *findUserInChannel(std::string userName, std::string channelName);
 

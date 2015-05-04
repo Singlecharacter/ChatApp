@@ -173,7 +173,7 @@
 	"IMessageSource.h"
 	<fstream>
 
-1430594233 source:/home/conor/Desktop/ChatApp/IRCChatApp/main.cpp
+1430712765 source:/home/conor/Desktop/ChatApp/IRCChatApp/main.cpp
 	<stdio.h>
 	<stdlib.h>
 	<unistd.h>
@@ -186,12 +186,14 @@
 	<arpa/inet.h>
 	<sys/wait.h>
 	<signal.h>
+	<pthread.h>
 	"defines.h"
 	"Message.h"
 	"MessageBuilder.h"
 	"stdafx.h"
+	"channellist.h"
 
-1430594167 /home/conor/Desktop/ChatApp/IRCChatApp/defines.h
+1430710090 /home/conor/Desktop/ChatApp/IRCChatApp/defines.h
 	<string>
 	<vector>
 
@@ -207,4 +209,11 @@
 
 1429538927 source:/home/conor/Desktop/ChatApp/IRCChatApp/stdafx.cpp
 	"stdafx.h"
+
+1430704310 source:/home/conor/Desktop/ChatApp/IRCChatApp/channellist.cpp
+	"channellist.h"
+
+1430704287 /home/conor/Desktop/ChatApp/IRCChatApp/channellist.h
+	"stdafx.h"
+	"defines.h"
 

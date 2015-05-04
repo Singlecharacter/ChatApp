@@ -25,6 +25,8 @@ bool ChannelList::addChannel(std::string name)
     temp->next->name = name;
     temp->next->next = nullptr;
 
+    std::cout << temp->next->name << std::endl;
+
     return true;
 }
 
@@ -58,7 +60,6 @@ channel *ChannelList::findChannel(std::string name)
     {
         if(temp->name == name)
         {
-
             return temp;
         }
 
@@ -101,6 +102,8 @@ bool ChannelList::addUser(user *newUser, std::string channelName)
 
             return true;
         }
+
+        temp = temp->next;
     }
 
     return false;

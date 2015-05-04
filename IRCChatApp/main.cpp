@@ -40,18 +40,24 @@ void *client_thread(void *a)
 {
     int client_fd = *((int *)a);
     channel *clientChannel = nullptr;
-    char buf[MAXDATASIZE];
 
     user *myUser = nullptr;
 
     while(1)
     {
-        if(recv(client_fd, buf, MAXDATASIZE - 1, 0) > 0)
+        char buf[MAXDATASIZE];
+
+        int numbytes = recv(client_fd, buf, MAXDATASIZE - 1, 0);
+
+        if(numbytes > 0)
         {
+            buf[numbytes] = '\0';
             std::string bufString = buf;
             std::string replyBody = "";
 
             Message newMessage(bufString);
+
+            std::cout << "Received message: " << bufString << std::endl;
 
             int messageType = newMessage.getInt("type");
 
@@ -86,6 +92,7 @@ void *client_thread(void *a)
                     Message chatMessage = (new MessageBuilder())->putInt("type",SERVER_CHAT_CHANNEL)
                                                                 ->putString("main",newMessage.getString("main"))
                                                                 ->putString("channel",clientChannel->name)
+                                                                ->putString("name",myUser->name)
                                                                 ->build();
 
 
@@ -97,7 +104,7 @@ void *client_thread(void *a)
                 }
                 else
                 {
-                    replyBody = "You must join a channel first.";
+                    replyBody = "You must join a channel first. Use #channel.";
                 }
             }
             else if(messageType == USER_CONNECT_CHANNEL)
@@ -113,12 +120,26 @@ void *client_thread(void *a)
                     }
                     else
                     {
-                        replyBody = "You must pick a name first.";
+                        replyBody = "You must pick a name first. Use #name.";
                     }
                 }
                 else
                 {
-                    replyBody = "That channel doesn't exist.";
+                    replyBody = "That channel doesn't exist. You can create it with #createchannel.";
+                }
+            }
+            else if(messageType == USER_CREATE_CHANNEL)
+            {
+                std::string channelName = newMessage.getString("channel");
+
+                if(channelName != "")
+                {
+                    channels.addChannel(channelName);
+                    replyBody = "Created channel " + channelName;
+                }
+                else
+                {
+                    replyBody = "You must enter a channel name.";
                 }
             }
 
@@ -127,6 +148,8 @@ void *client_thread(void *a)
                 Message reply = (new MessageBuilder())->putInt("type",SERVER_GENERAL)->putString("main",replyBody)->build();
 
                 send(client_fd,reply.getRaw().c_str(),reply.getRaw().length(),0);
+
+                std::cout << "Sent reply: " + reply.getRaw() << std::endl;
             }
         }
     }

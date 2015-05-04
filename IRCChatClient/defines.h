@@ -16,3 +16,4 @@ const int USER_CHAT_USER = 11;
 const int USER_CONNECT_CHANNEL = 12;
 const int USER_DISCONNECT_CHANNEL = 13;
 const int USER_SET_NAME = 14;
+const int USER_CREATE_CHANNEL = 15;

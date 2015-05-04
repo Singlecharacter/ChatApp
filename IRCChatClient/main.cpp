@@ -35,12 +35,14 @@ void *recv_loop(void *a)
 {
     int sockfd = *((int *)a);
 
-    char buf[MAXDATASIZE];
-
     while(1)
     {
-        if(recv(sockfd,buf,MAXDATASIZE - 1,0) > 0)
+        char buf[MAXDATASIZE];
+
+        int numbytes = recv(sockfd,buf,MAXDATASIZE - 1,0);
+        if(numbytes > 0)
         {
+            buf[numbytes] = '\0';
             std::string bufString = buf;
 
             Message newMessage(bufString);
@@ -57,7 +59,7 @@ void *recv_loop(void *a)
             }
             else if(messageType == SERVER_CHAT_CHANNEL)
             {
-                std::cout << newMessage.getString("channel") + ": " + newMessage.getString("main") << std::endl;
+                std::cout << "<" + newMessage.getString("channel") + ">" + newMessage.getString("name") + ": " + newMessage.getString("main") << std::endl;
             }
         }
     }
@@ -94,6 +96,10 @@ void *input_loop(void *a)
             {
                 commandType = USER_CONNECT_CHANNEL;
             }
+            else if(command == "createchannel")
+            {
+                commandType = USER_CREATE_CHANNEL;
+            }
         }
 
         s.erase(0, s.find(' ', 0)+1);
@@ -112,6 +118,10 @@ void *input_loop(void *a)
         {
             sendMessage = (new MessageBuilder())->putInt("type",commandType)->putString("channel",s)->build();
         }
+        else if(commandType == USER_CREATE_CHANNEL)
+        {
+            sendMessage = (new MessageBuilder())->putInt("type",commandType)->putString("channel",s)->build();
+        }
 
         send(sockfd, sendMessage.getRaw().c_str(),sendMessage.getRaw().length(),0);
     }
@@ -125,16 +135,16 @@ int main(int argc, char *argv[])
     int rv;
     char s[INET6_ADDRSTRLEN];
 
-    /*if (argc != 2) {
+    if (argc != 2) {
         fprintf(stderr,"usage: client hostname\n");
         exit(1);
-    }*/
+    }
 
     memset(&hints, 0, sizeof hints);
     hints.ai_family = AF_UNSPEC;
     hints.ai_socktype = SOCK_STREAM;
 
-    if ((rv = getaddrinfo("localhost", PORT, &hints, &servinfo)) != 0) {
+    if ((rv = getaddrinfo(argv[1], PORT, &hints, &servinfo)) != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
         return 1;
     }

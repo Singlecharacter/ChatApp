@@ -102,7 +102,10 @@ void *input_loop(void *a)
             }
         }
 
-        s.erase(0, s.find(' ', 0)+1);
+        if(command != "")
+        {
+            s.erase(0, s.find(' ', 0)+1);
+        }
 
         Message sendMessage;
 
